@@ -43,37 +43,11 @@ function checkCurrentUserInGroup(groupName, callback){
     });    
 }
 
-function check1CurrentUserInGroup(groupName, callback, ext){
-	var siteUrl = _spPageContextInfo.siteAbsoluteUrl;
-    var returnVal = false;
-    $.ajax({
-        url: siteUrl + "/_api/web/currentUser?$select=Groups/Title&$expand=Groups",
-        method: "GET",
-        headers: { "Accept": "application/json; odata=verbose" },
-        success: function (data) {
-            //console.log(data.d.Groups.results);            
-            if (searchObjInArray(groupName,"Title",data.d.Groups.results)!=null)
-            {
-            	//console.log("Group Found");
-            	returnVal = true;
-            	callback(true,ext);
-            }
-            else
-            {
-            	callback(false,ext);            
-            }
-            
-        },
-        error: function(error) {
-            console.log(error);
-            callback(false,ext);
-        }
-    });
-    
-    return returnVal;
-}
-
-
+/*---------------------------------------------------------------------------------------------------*/
+/*
+  This operation is to check whether Users is exist within Sharepoint Group we trying to search for
+  If it's does then it will return a bool value.
+*/
 function chkCurrentUserInGroup(groupName){
 	var siteUrl = _spPageContextInfo.siteAbsoluteUrl;    
     $.ajax({
@@ -98,7 +72,7 @@ function chkCurrentUserInGroup(groupName){
     return returnVal;
 }
 
-
+/*---------------------------------------------------------------------------------------------------*/
 
 function getUser(id, url , success, failure){
 	var siteUrl = url; 
@@ -116,7 +90,15 @@ function getUser(id, url , success, failure){
 	  });   
 }
 
-
+/*---------------------------------------------------------------------------------------------------*/
+/*
+  This operation is to search an Object within an Array which you have to provide key & property for 
+  this to search.
+  Usage:
+  	searchObjInArray("Title","Key",currUserDataArray); 
+  	//We trying to search for Position Title for the current User.
+  
+*/
 function searchObjInArray(nameKey, prop, myArray) {
     //console.log (nameKey,prop, myArray);
     for (var i = 0; i < myArray.length; i++) {
@@ -126,7 +108,7 @@ function searchObjInArray(nameKey, prop, myArray) {
     }
     return null;
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function GenerateCAMLQuery(searchObj){
 
     var sQuery = "";
@@ -163,7 +145,7 @@ function GenerateCAMLQuery(searchObj){
 	
     return sQuery;
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function convertSPDate(inputFormat) {
 /*return new Date(d).toLocaleDateString("en-AU");*/
 	if(inputFormat != null){
@@ -176,7 +158,7 @@ function convertSPDate(inputFormat) {
   	    return "";
   	}
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function getFormattedDate(input) {
     var pattern = /(.*?)\/(.*?)\/(.*?)$/;
     if(input != null){
@@ -187,7 +169,7 @@ function getFormattedDate(input) {
 	    return result;
     }
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 
 function convertSPDateNew(d) {    
 	if(d != null){
@@ -199,7 +181,7 @@ function convertSPDateNew(d) {
 	else
 	   return "";
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function convertiCalDate(d) {    
 	if(d != null){
 	    console.log("parse New date: "+d);
@@ -210,13 +192,13 @@ function convertiCalDate(d) {
 	else
 	   return "";
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 
 function convertSPDateTime(d) {
 	var vDate =  new Date(d);
 	return vDate.toLocaleDateString("en-AU")+ " " + vDate.toLocaleTimeString("en-AU");
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function convertSPDateAU(d) {
     if(d != null){
     	var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -224,7 +206,7 @@ function convertSPDateAU(d) {
 		return vDate.toLocaleDateString("en-AU", options);
 	}
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function convertStDate(d) {
     if(d != null){
     	var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -233,7 +215,7 @@ function convertStDate(d) {
 	}
 }
 
-
+/*---------------------------------------------------------------------------------------------------*/
 // CREATE Operation
 // listName: The name of the list you want to get items from
 // weburl: The url of the web that the list is in. 
@@ -264,12 +246,12 @@ function CreateListItemWithDetails(listName, webUrl, itemProperties, itemType ,s
         }
     });
 }
- 
+/*---------------------------------------------------------------------------------------------------*/ 
 // Get List Item Type metadata
 function GetItemTypeForListName(name) {
     return "SP.Data." + name.charAt(0).toUpperCase() + name.split(" ").join("").slice(1) + "ListItem";
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 // READ SPECIFIC ITEM operation
 // itemId: The id of the item to get
 // listName: The name of the list you want to get items from
@@ -297,7 +279,7 @@ function getListItemWithId(itemId, column, listName, siteurl, success, failure) 
         }
     });
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 // READ operation
 // listName: The name of the list you want to get items from
 // siteurl: The url of the site that the list is in. 
@@ -319,7 +301,7 @@ function getAllListItems(listName, siteurl,success, failure) {
         }
     });
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 
 // occurs when a user clicks the read button
 function ReadAll(listName, url) {
@@ -336,7 +318,7 @@ function ReadAll(listName, url) {
         alert("Ooops, an error occured. Please try again");
     });
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 // occurs when a user clicks the read button
 function Read() {
     var listName = "MyList";
@@ -353,7 +335,7 @@ function Read() {
         alert("Ooops, an error occured. Please try again");
     });
 }
-
+/*---------------------------------------------------------------------------------------------------*/
  
 // READ operation
 // listName: The name of the list you want to get items from
@@ -375,7 +357,7 @@ function getListItems(listName, siteurl, criteria, columns,order, success, failu
         }
     });
 }
-/*--------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------*/
 function getCalItems(listName, siteurl, criteria, columns,order, success, failure) {
     var searchURL  = siteurl + "/_api/web/lists/getbytitle('" + listName + "')/items?$select=*&$filter=" +criteria + "&$orderby=" +order +"&$top=1000";
 
@@ -392,7 +374,7 @@ function getCalItems(listName, siteurl, criteria, columns,order, success, failur
         }
     });
 }
-/*--------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------*/
 
 
 function getListItemsALL(listName, siteurl, criteria, columns, order, success, failure) {
@@ -412,7 +394,7 @@ function getListItemsALL(listName, siteurl, criteria, columns, order, success, f
         }
     });
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function getListFieldbyID(listID, siteurl, criteria, columns,order, success, failure) {
     var searchURL  = siteurl + "/_api/web/lists(guid'" + listID + "')/fields()";
     //console.log(searchURL);
@@ -430,7 +412,7 @@ function getListFieldbyID(listID, siteurl, criteria, columns,order, success, fai
 }
 
 
-
+/*---------------------------------------------------------------------------------------------------*/
 function getListItemsWithExpand(listName, siteurl, criteria, columns,order,expand , success, failure) {
     var searchURL  = siteurl + "/_api/web/lists/getbytitle('" + listName + "')/items?$select=" +columns + "&$filter=" +criteria + "&$orderby=" +order + "&$expand=" +expand ;
     //console.log(searchURL);
@@ -447,7 +429,7 @@ function getListItemsWithExpand(listName, siteurl, criteria, columns,order,expan
     });
 }
 
-
+/*---------------------------------------------------------------------------------------------------*/
 // READ operation
 // listName: The name of the list you want to get items from
 // siteurl: The url of the site that the list is in. 
@@ -474,7 +456,7 @@ function getListItemsbyCount(listName, siteurl, criteria, columns,order,count, s
 
 
 
-
+/*---------------------------------------------------------------------------------------------------*/
 
 // occurs when a user clicks the update button
 function Update() {
@@ -488,7 +470,7 @@ function Update() {
         alert("Ooops, an error occured. Please try again");
     });
 }
- 
+/*---------------------------------------------------------------------------------------------------*/ 
 // Update Operation
 // listName: The name of the list you want to get items from
 // siteurl: The url of the site that the list is in. // title: The value of the title field for the new item
@@ -532,7 +514,7 @@ if (itemType)
     });
 }
 
-
+/*---------------------------------------------------------------------------------------------------*/
 // occurs when a user clicks the delete button
 function Delete() {
     var listName = "MyList";
@@ -544,7 +526,7 @@ function Delete() {
         alert("Ooops, an error occured. Please try again");
     });
 }
- 
+/*---------------------------------------------------------------------------------------------------*/ 
 // Delete Operation
 // itemId: the id of the item to delete
 // listName: The name of the list you want to delete the item from
@@ -574,7 +556,7 @@ function deleteListItem(itemId, listName, siteUrl, success, failure) {
        failure(data);
    });
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function DelListItems(itemId, listName, siteurl, success, failure) {
     //GetByTitle('ListTitle')/items?$select=*&exclude=Title
     var searchURL  = siteurl + "/_api/web/lists/getbytitle('" + listName + "')/items('" + itemId + "')";    
@@ -597,7 +579,7 @@ function DelListItems(itemId, listName, siteurl, success, failure) {
     });
 }
 
-
+/*---------------------------------------------------------------------------------------------------*/
 function tableRowsToJSON (tableSelector, ignoreRows) {
       var item, attr, cleanAttrdata, _JSON = [];
      
@@ -631,7 +613,7 @@ function tableRowsToJSON (tableSelector, ignoreRows) {
     var  len = (String(base || 10).length - String(this).length)+1;
     return len > 0? new Array(len).join(chr || '0')+this : this;
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function tableToJSONTXT(tableSelector)
 {
 	var item, attr, cleanAttrdata, _JSON = [];
@@ -652,7 +634,7 @@ function tableToJSONTXT(tableSelector)
 	});	
 	return _JSON;
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function tableRowsToJSONTXT(tableSelector, ignoreRows) {
       var item, attr, cleanAttr, _JSON = [];
      
@@ -688,7 +670,7 @@ function tableRowsToJSONTXT(tableSelector, ignoreRows) {
     return len > 0? new Array(len).join(chr || '0')+this : this;
 }
 
-
+/*---------------------------------------------------------------------------------------------------*/
 
 function GetCurrentDateTime(){
 
@@ -706,7 +688,7 @@ function GetCurrentDateTime(){
             }
             
             
-            
+/*---------------------------------------------------------------------------------------------------*/            
 function chatBoxToJSON (selector) {
    var item, attr, cleanAttrdata, _JSON = [];
    console.log("chatBoxToJSON ");
@@ -730,7 +712,7 @@ function chatBoxToJSON (selector) {
    return _JSON;
 }
             
-            
+/*---------------------------------------------------------------------------------------------------*/            
 function getDataWithCaml(url, listName, caml, callback) {
     var endpoint = url + "/_api/web/lists/GetByTitle('"
         + listName + "')/GetItems";
@@ -752,7 +734,7 @@ function getDataWithCaml(url, listName, caml, callback) {
 		}
     });
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 
 function GetJsonTemplate(siteurl, formmName,success, failure)
 {
@@ -773,7 +755,7 @@ function GetJsonTemplate(siteurl, formmName,success, failure)
         }
     });
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function GetEmailTemplate(siteurl, formmName,success, failure)
 {
 	//https://worxonline.sharepoint.com/sites/councillor/_api/web/lists/getbytitle('FormHtmlTemplate')/items?$filter=Title+eq+%27ExpenseForm%27
@@ -794,7 +776,7 @@ function GetEmailTemplate(siteurl, formmName,success, failure)
         }
     });
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function GetNotiTemplate(siteurl, formmName,success, failure)
 {
 	//https://worxonline.sharepoint.com/sites/councillor/_api/web/lists/getbytitle('FormHtmlTemplate')/items?$filter=Title+eq+%27ExpenseForm%27
@@ -815,18 +797,18 @@ function GetNotiTemplate(siteurl, formmName,success, failure)
         }
     });
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 
 function PrepareFromDateSearch(d) {
 var dateParts = d.split('/');
 return dateParts[2]+ "-" + dateParts[1]+ "-"  + dateParts[0] + "T00:00:00.000Z";
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function PrepareToDateSearch(d) {
 var dateParts = d.split('/');
 return dateParts[2]+ "-" + dateParts[1]+ "-"  + dateParts[0] + "T23:59:59.000Z";
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function GetAccountName(displayName, url){
 	var accountName;
 	url = _spPageContextInfo.webAbsoluteUrl;
@@ -904,7 +886,7 @@ function GetDisplayName(id, url){
 	});
 	return accountName;
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function GetName(id){
 	var accountName = {};
 	var url = _spPageContextInfo.webAbsoluteUrl;
@@ -937,8 +919,10 @@ function GetName(id){
 	});
 	return accountName;
 }
-
-
+/*---------------------------------------------------------------------------------------------------*/
+/*
+  This operation is where we trying to identifying the user by their login name given
+*/
 function GetUserByLogin(login){
 //https://georgesriver.sharepoint.com/sites/rivernet/_api/web/siteusers(@v)?@v='i%3A0%23.f%7Cmembership%7Csmclean%40georgesriver.nsw.gov.au'
    	var trimLogin = login.replace("i:0#.f|","i%3A0%23.f%7C");
@@ -956,11 +940,11 @@ function GetUserByLogin(login){
 		async: false,
 		success: function (data) {
 			accountName = { 
-								Name: data.d.Title,
-				                Id: data.d.Id,
-				                login: data.d.LoginName,
-				                Email: data.d.Email				                
-				          };
+					name: data.d.Title,
+				        id: data.d.Id,
+				        login: data.d.LoginName,
+				        Email: data.d.Email				                
+				       };
 			console.log(accountName);
 			
 		},
@@ -970,7 +954,7 @@ function GetUserByLogin(login){
 	});
 	return accountName;
 }
-
+/*---------------------------------------------------------------------------------------------------*/
 function GetUserProfileByLogin(login){
 //https://georgesriver.sharepoint.com/sites/rivernet/_api/web/siteusers(@v)?@v='i%3A0%23.f%7Cmembership%7Csmclean%40georgesriver.nsw.gov.au'
    	var trimLogin = login.replace("i:0#.f|","i%3A0%23.f%7C");
@@ -999,7 +983,23 @@ function GetUserProfileByLogin(login){
 	return accountName;
 }
 
+/*---------------------------------------------------------------------------------------------------*/
+/*
+   This operation used for search entire organisation on sharepoint
+   USAGE:
+	$('#txtRequesterName').autocomplete({
+  		source: search,
+  		minLength: 3,
+  		select: function(event, data){
+  			var sdata = data.item;
+  			console.log(sdata);
+  			$('#txtRequesterName').val(sdata.value);
+  			$('#RequesterID').val(sdata.Id);
+  		}
+	});
 
+   
+*/
 
 function search(request,response) {
  //var appweburl = decodeURIComponent(getQueryStringParameter('SPAppWebUrl'));
@@ -1056,7 +1056,7 @@ function search(request,response) {
   }
  });  
 }
-/*------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------*/
 function getDayofweek(day)
 {
 	var weekday = new Array(7);
@@ -1069,12 +1069,15 @@ function getDayofweek(day)
 		weekday[6] = "Saturday";
 	return weekday[day.getDay()];		
 }
-/*------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------*/
 function padzero(str, max) {
   str = str.toString();
   return str.length < max ? padzero("0" + str, max) : str;
 }
-/*------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------*/
+/*
+    This operation is used for creating html option list value from an Object Array.
+*/
 function LoadComboJSON(data,jqControl,code,title,defaultValue){
 	jqControl.empty();
 	jqControl.append("<option value=''>Select..</option>");
@@ -1088,8 +1091,11 @@ function LoadComboJSON(data,jqControl,code,title,defaultValue){
 	}
 
 } 
-/*------------------------------------------------------------------------*/
-//Send Mail
+/*---------------------------------------------------------------------------------------------------*/
+//Send Mail directly from the script instead of using workflow.
+/*
+    Note: this API Email sender does not have capability for file Attachment.
+*/
 function SendEmail(from, to, body, subject) {
 
 	
@@ -1123,12 +1129,12 @@ function SendEmail(from, to, body, subject) {
 	   }
 	});
 }
-/*------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------*/
 function isValidEmailAddress(emailAddress) {
     var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
     return pattern.test(emailAddress);
 }
-/*------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------*/
 function searchDir(request, response) {
  //var appweburl = decodeURIComponent(getQueryStringParameter('SPAppWebUrl'));
  //var hostweburl = decodeURIComponent(getQueryStringParameter('SPHostUrl'));
@@ -1191,4 +1197,4 @@ function searchDir(request, response) {
   }
  });  
 }
-/*------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------*/
