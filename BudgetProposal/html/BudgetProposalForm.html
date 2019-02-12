@@ -1,0 +1,1518 @@
+﻿<link href="/sites/rivernet/SiteAssets/bootstrap-admintemplate/css/AdminLTE.css" rel="stylesheet">
+<link href="/sites/rivernet/SiteAssets/bootstrap-admintemplate/css/iCheck/flat/orange.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/sites/rivernet/SiteAssets/bootstrap-admintemplate/css/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/sites/rivernet/SiteAssets/bootstrap-admintemplate/css/datatables/responsive.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/sites/rivernet/SiteAssets/bootstrap-admintemplate/css/jQueryUI/jquery-ui-1.10.3.custom.css">
+<link rel="stylesheet" type="text/css" href="/sites/rivernet/SiteAssets/bootstrap-admintemplate/css/sweetalert/sweetalert.css">
+<link rel="stylesheet" href="/sites/rivernet/SiteAssets/bootstrap-admintemplate/css/timepicker/jquery.timepicker.min.css">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+<!--<link href="/sites/rivernet/SiteAssets/css/easy-autocomplete.themes.min.css" rel="stylesheet">-->
+
+<style type="text/css" media="all">
+
+#O365_MainLink_Settings{
+	display:none;
+}
+
+	#print_helper {
+	  display: none;
+	}
+
+[data-toggle="collapse"]:after {
+    display: inline-block;
+    font: normal normal normal 16px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f054";
+    transform: rotate(0deg) ;
+    transition: all linear 0.25s;
+    float: right;
+    padding-top: 20px;
+	padding-right: 10px;
+  }   
+[data-toggle="collapse"].collapsed:after {
+  transform: rotate(90deg) ;
+}
+
+.funkyradio div {
+  clear: both;
+  overflow: hidden;
+}
+
+.funkyradio label {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4;
+  font-weight: normal;
+}
+
+.funkyradio input[type="radio"]:empty,
+.funkyradio input[type="checkbox"]:empty {
+  display: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label,
+.funkyradio input[type="checkbox"]:empty ~ label {
+  position: relative;
+  line-height: 2.5em;
+  text-indent: 3.25em;
+  margin-top: 2em;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label:before,
+.funkyradio input[type="checkbox"]:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 2.5em;
+  background: #D1D3D4;
+  border-radius: 3px 0 0 3px;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+  color: #888;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+  content: '\2714';
+  text-indent: .9em;
+  color: #C2C2C2;
+}
+
+.funkyradio input[type="radio"]:checked ~ label,
+.funkyradio input[type="checkbox"]:checked ~ label {
+  color: #777;
+}
+
+.funkyradio input[type="radio"]:checked ~ label:before,
+.funkyradio input[type="checkbox"]:checked ~ label:before {
+  content: '\2714';
+  text-indent: .9em;
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio input[type="radio"]:focus ~ label:before,
+.funkyradio input[type="checkbox"]:focus ~ label:before {
+  box-shadow: 0 0 0 3px #999;
+}
+
+.funkyradio-default input[type="radio"]:checked ~ label:before,
+.funkyradio-default input[type="checkbox"]:checked ~ label:before {
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio-primary input[type="radio"]:checked ~ label:before,
+.funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #337ab7;
+}
+
+.funkyradio-success input[type="radio"]:checked ~ label:before,
+.funkyradio-success input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #5cb85c;
+}
+
+.funkyradio-danger input[type="radio"]:checked ~ label:before,
+.funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #d9534f;
+}
+
+.funkyradio-warning input[type="radio"]:checked ~ label:before,
+.funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #f0ad4e;
+}
+
+.funkyradio-info input[type="radio"]:checked ~ label:before,
+.funkyradio-info input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #5bc0de;
+}
+
+/* Hiding the checkbox, but allowing it to be focused */
+.badgebox
+{
+    opacity: 0;
+}
+
+.badgebox + .badge
+{
+    /* Move the check mark away when unchecked */
+    text-indent: -999999px;
+    /* Makes the badge's width stay the same checked and unchecked */
+	width: 20px;
+}
+
+.badgebox:focus + .badge
+{
+    /* Set something to make the badge looks focused */
+    /* This really depends on the application, in my case it was: */
+    
+    /* Adding a light border */
+    box-shadow: inset 0px 0px 5px;
+    /* Taking the difference out of the padding */
+}
+
+.badgebox:checked + .badge
+{
+    /* Move the check mark back when checked */
+	text-indent: 0;
+}
+
+#radioBtn .notActive{
+    color: #3276b1;
+    background-color: #fff;
+}
+
+
+
+input[type="checkbox"], input[type="radio"]{
+	position: absolute;
+	right: 9000px;
+}
+
+/*Check box*/
+input[type="checkbox"] + .label-text:before{
+	content: "\f096";
+	font-family: "FontAwesome";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing:antialiased;
+	width: 1em;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+input[type="checkbox"]:checked + .label-text:before{
+	content: "\f14a";
+	color: #2980b9;
+	animation: effect 250ms ease-in;
+}
+
+input[type="checkbox"]:disabled + .label-text{
+	color: #aaa;
+}
+
+input[type="checkbox"]:disabled + .label-text:before{
+	/*content: "\f0c8";*/
+	color: #ccc;
+}
+
+/*Radio box*/
+input[type="radio"] + .label-text:before{
+	content: "\f10c";
+	font-family: "FontAwesome";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing:antialiased;
+	width: 1em;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+input[type="radio"]:checked + .label-text:before{
+	content: "\f192";
+	color: #8e44ad;
+	animation: effect 250ms ease-in;
+}
+
+input[type="radio"]:disabled + .label-text{
+	color: #aaa;
+}
+
+input[type="radio"]:disabled + .label-text:before{
+	/*content: "\f111";*/
+	color: #ccc;
+}
+
+/*Radio Toggle*/
+
+.toggle input[type="radio"] + .label-text:before{
+	content: "\f204";
+	font-family: "FontAwesome";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing:antialiased;
+	width: 1em;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.toggle input[type="radio"]:checked + .label-text:before{
+	content: "\f205";
+	color: #16a085;
+	animation: effect 250ms ease-in;
+}
+
+.toggle input[type="radio"]:disabled + .label-text{
+	color: #aaa;
+}
+
+.toggle input[type="radio"]:disabled + .label-text:before{
+	/*content: "\f204";*/
+	color: #ccc;
+}
+
+
+@keyframes effect{
+	0%{transform: scale(0);}
+	25%{transform: scale(1.3);}
+	75%{transform: scale(1.4);}
+	100%{transform: scale(1);}
+}
+
+	
+</style>
+<style type="text/css" media="print">
+
+	#print_helper {
+		display: block;
+		overflow: visible;
+		white-space: pre;
+		white-space: pre-wrap;
+	}
+table {
+    page-break-before : avoid;
+    page-break-inside : avoid;
+    padding: 0;border-collapse: collapse; }
+table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+table tr:nth-child(2n) {
+    background-color: #f8f8f8; }
+table tr th {
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    margin: 0;
+    padding: 6px 13px; }
+table tr td {
+    border: 1px solid #cccccc;
+    margin: 0;
+    padding: 6px 13px; }
+table tr th :first-child, table tr td :first-child {
+    margin-top: 0; }
+table tr th :last-child, table tr td :last-child {
+    margin-bottom: 0; }
+
+tr {
+    page-break-inside: avoid;
+    page-break-after : avoid;
+} 
+
+th {
+    page-break-inside: avoid;
+    page-break-after : avoid;
+} 	
+	
+</style>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/json2html.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/jquery.json2html.js"></script>
+
+<!--<script type="text/javascript" src="/sites/rivernet/SiteAssets/bootstrap-admintemplate/js/responsive.bootstrap.min.js"></script>-->
+<!--<script type="text/javascript" src="/sites/rivernet/SiteAssets/StaffPortalForms/CommonFiles/Utility.js"></script>-->
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/StaffPortalForms/CommonFiles/sppeoplepicker.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/StaffPortalForms/CommonFiles/Attachments.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/bootstrap-admintemplate/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/bootstrap-admintemplate/js/plugins/timepicker/jquery.timepicker.min.js"></script>
+
+
+
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/moment.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/StaffPortalForms/BudgetProposal/js/BudgetProposalForm.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/jQuery.print.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/filterselect.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.60/inputmask/jquery.inputmask.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery.inputmask.phoneau@1.0.0/src/phoneAU.min.js"></script>
+
+
+<section id="printarea" class="content form-content">
+  <div class="row">
+
+	<!--Content-->
+	<div class="col-md-12">
+	
+			  <div id="infobox" class="alert alert-warning" style="display:none">
+                
+                <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                <p>Warning alert preview. This alert is dismissable.</p>
+              </div>
+
+				<div id="infobrowser" class="alert alert-warning" style="display:none">
+                
+                	<h4><i class="icon fa fa-check"></i> NOTE:</h4>
+                	<p>This form will only support the following Browser:<br>
+                		<ul>
+                			<li>Internet Explorer 10/11/Edge</li>
+                			<li>Chrome all version</li>
+                			<li>Firefox all version</li>
+                		</ul>
+                	</p>
+                </div>
+				
+				
+				<div id="requestStatusDiv" class="callout callout-warning" style="display:none;">
+							<h4>Status</h4>
+							<p id="requestStatus"></p>
+				</div>
+
+				
+				<div class="callout callout-warning">
+				   <h4><b>INTRODUCTION</b></h4>
+				   <p>Proposal to apply for budget allocation (if not included in adopted budget)</p>   
+				   <p>
+				       <ul>
+				           <li>Ensure all fields are completed.</li>
+				       </ul>
+				   </p>
+				</div> 
+						
+	
+				<!--general form elements-->
+				<div id="EmpDetails" class="box box-form">
+					<div class="box-header with-border">
+						<div class="row">
+							<div class="col-sm-8">
+								<h3 class="box-title"><b>REQUESTER DETAILS</b></h3>
+							</div>
+							<div class="col-sm-4 pull-right">
+								<div id="picProfile"></div>
+							</div>
+						</div>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div class="box-body">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+				                  <label><b>Requester Name</b><span class="mandatory" style="color:red">*</span></label>
+									<div class="input-group">
+   										<div class="input-group-addon"><i class="fas fa-user-secret"></i></div>    
+					                    <input id="txtRequesterName" type="text" class="form-control" placeholder="">					                    
+					                    <input id="RequesterID" type="hidden" class="form-control" placeholder="">
+				                    </div>
+				                </div>
+				            </div>
+				            <div class="col-sm-6">    
+				                <div class="form-group">
+				                  <label><b>Position Title</b><span class="mandatory" style="color:red">*</span></label>
+									<div class="input-group">
+   										<div class="input-group-addon"><i class="fas fa-award"></i></div>    
+				                    <input id="txtPosition" type="text" class="form-control" placeholder="">
+				                  </div>
+				                 </div>
+				            </div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+				                  <label><b>Directorate</b><span class="mandatory" style="color:red">*</span></label>
+									<div class="input-group">
+   										<div class="input-group-addon"><i class="fas fa-briefcase"></i></div>    				                  
+					                    <select id="txtDirectorate" class="form-control">
+						                    <option data-id=""value="">Please select...</option>			                    	
+						                    <option data-id="Office of the General Manager"value="Office of the General Manager">Office of the General Manager</option>
+						                    <option data-id="Community and Culture"value="Community and Culture">Community and Culture</option>
+						                    <option data-id="Business and Corporate Services"value="Business and Corporate Services">Business and Corporate Services</option>
+						                    <option data-id="Environment and Planning"value="Environment and Planning">Environment and Planning</option>
+						                    <option data-id="Assets and Infrastructure"value="Assets and Infrastructure">Assets and Infrastructure</option>
+						                    <option data-id="Transformation and Change Temporary"value="Transformation and Change Temporary">Transformation and Change Temporary</option>
+					                    </select>
+				                    </div>
+				                </div>
+				            </div>
+				            <div class="col-sm-6">    
+				                <div class="form-group">
+				                  <label><b>Business Unit</b><span class="mandatory" style="color:red">*</span></label>
+									<div class="input-group">
+   										<div class="input-group-addon"><i class="fas fa-calendar"></i></div>    
+				                    <input id="txtDepartment" type="text" class="form-control" placeholder="">
+				                  </div>
+				                 </div>
+				            </div>
+				            
+				            <div id="txtMgrApprove" class="col-sm-6">
+								<div class="form-group">
+				                  <label><b>Manager / Coordinator / Team Leader To be Approve</b><span class="mandatory" style="color:red">*</span></label>
+				                  <div>
+				                    <select id="txtManagerApprove" class="form-control"></select>
+				                    <input id="txtMgrApp" type="text" class="form-control" placeholder="" style="display:none">
+				                  </div>  
+				                </div>
+				            </div>
+
+				            <div id="txtDirApprove" class="col-sm-6">
+								<div class="form-group">
+				                  <label><b>Manager / Director To be Approve</b><span class="mandatory" style="color:red">*</span></label>
+				                  <div>
+				                    <select id="txtDirectorApprove" class="form-control"></select>
+				                    <input id="txtDirApp" type="text" class="form-control" placeholder="" style="display:none">
+				                  </div>  
+				                </div>
+				            </div>
+				            
+						</div>
+					
+					
+						<!--------------------------->
+						<!--<div class="row">
+							<div class="col-sm-6">    
+				                <div class="form-group">
+				                  <label><b>Teams</b></label>
+									<div class="input-group">
+   										<div class="input-group-addon"><i class="fas fa-users"></i></div>    
+				                    	<input id="txtSearchTeam" type="text" class="form-control" placeholder="">		
+				                    	<input id="txtTeamName" type="hidden" class="form-control" placeholder="">		                    	
+				                    	<input id="txtTeamPos" type="hidden" class="form-control" placeholder="">	
+				                    	<input id="txtTeamId" type="hidden" class="form-control" placeholder="">	                    	
+				                    </div><span><i>type 3 character to begin the search..</i></span>
+				                 </div>
+				                 <div id="addbtn" class="col-sm-12">
+									<button type="button" class="btn btn-info btn-warning btn-expense pull-right no-print" id="AddLCP">Add to Team > </button>
+								</div>
+
+				            </div>
+
+				           
+				            <div class="col-sm-6">
+					            <div class="form-group">
+					               <label><b>List of Team members</b></label>
+				                	<table id="tblP" width="100%" class="table table-bordered expense-table">
+										<tbody>
+											<tr style="background-color: #ebebeb;">
+												<th style="width:35%">Name</th>
+												<th style="width:65%">Position</th>
+												<th class="col-remove" style="width:5%"></th>
+											</tr>
+										</tbody>
+									</table>   
+								</div>  
+				            </div>
+				  
+				  
+						</div>-->
+						<!--------------------------->
+						
+						
+					</div>
+					
+				</div>
+				<!--/.box-->
+
+	
+
+
+			
+				<!--general form elements-->
+		<div class="panel-group" id="accordion">			
+				<div class="box box-form">
+					<div class="box-header with-border">
+						<a class="" data-toggle="collapse" href="#collapse1" aria-expanded="true" aria-controls="collapse1"><h3 class="box-title"><b>PROJECT DETAILS</b></h3></a>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div id="collapse1" class="panel-collapse collapse in">
+					<div class="box-body">						
+						
+						<div class="row">
+							<div class="col-sm-12">
+					            <div class="form-group">
+					                  <label>Title of project<span class="mandatory" style="color:red">*</span></label>
+										<div class="input-group">
+      										<div class="input-group-addon"><i class="fas fa-building"></i></div>        								
+					                    <input id="txtProjTitle" type="text" class="form-control" placeholder="">
+					                  </div>
+					            </div>							
+							</div>
+							<!--------------------->
+							<div class="col-md-12">
+								<div class="form-group">
+				                    <label><b>Purpose of project</b><span class="mandatory" style="color:red">*</span><br/><span><i>(one paragraph max.)</i></span> </label>
+			                		<textarea id="txtProjPurpose" type="text" class="form-control" placeholder="" rows="6"></textarea>
+			                	</div>							
+		                	</div>
+							<!--------------------->							
+		            		<div class="col-sm-4">    
+		            		    <p>Priority of project for your Directorate</p>
+					            <div class="form-group">
+					                  <label>Priority <span class="mandatory" style="color:red">*</span></label>
+										<div class="input-group">
+      										<div class="input-group-addon"><i class="fas fa-building"></i></div>        								
+						                	<select id="txtProjPriority" class="form-control">
+						                		<option value="Low" selected>Low</option>
+						                		<option value="Medium">Medium</option>
+						                		<option value="High">High</option>
+						                	</select>					                   
+					                  </div>
+					            </div>
+							</div>
+							<!------------------------>
+							<div id="properiod" class="col-sm-8">
+							<p>Proposed period of expenditure</p>
+				            	<div class="col-sm-6">    				            	    
+						            <div class="form-group">
+						                  <label>from<span class="mandatory" style="color:red">*</span></label>
+											<div class="input-group">
+	      										<div class="input-group-addon"><i class="fas fa-building"></i></div>        								
+						                    	<input id="txtFrom" type="text" class="form-control" placeholder="">
+						                  </div>
+						            </div>
+								</div>
+								<!------------------------>
+				            	<div class="col-sm-6">    				            	    
+						            <div class="form-group">
+						                  <label>to<span class="mandatory" style="color:red">*</span></label>
+											<div class="input-group">
+	      										<div class="input-group-addon"><i class="fas fa-building"></i></div>        								
+						                    	<input id="txtTo" type="text" class="form-control" placeholder="">
+						                  </div>
+						            </div>
+								</div>
+								<!------------------------>
+							</div>
+						</div><!--End Row-->												
+
+					 </div>
+					</div>	
+					<!--/.box-body-->															
+				</div>
+				<!--/Section1 .box-->
+				
+				<!--general form elements-->
+				<div class="box box-form">
+					<div class="box-header with-border">
+						<a data-toggle="collapse" href="#collapse2" aria-expanded="true" aria-controls="collapse2"><h3 class="box-title"><b>COMMUNITY STRATEGIC PLAN (CSP) DETAILS</b></h3></a>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div id="collapse2" class="panel-collapse collapse in">
+					<div class="box-body">
+						<div class="row">
+			            	<div class="col-sm-6">    
+					            <div class="form-group">
+					                  <label><b>CSP Pillar</b><span class="mandatory" style="color:red">*</span></label>
+										<div class="input-group">
+      										<div class="input-group-addon"><i class="fas fa-building"></i></div>        								
+						                	<select id="txtCSPPillar" class="filterSelect form-control list" data-target="txtCSPGoals" data-allowempty=""></select>	
+						                	<input id="CSPPillar" type="hidden" class="form-control" placeholder="">				                   					                    	
+					                  </div>
+					            </div>
+							</div>
+							<!------------------------>
+			            	<div class="col-sm-6">    
+					            <div id="CSPGoals" class="form-group">
+					                  <label><b>Goal</b><span class="mandatory" style="color:red">*</span></label>
+					                  <div id="select0" class="input-group">
+      										<div class="input-group-addon"><i class="fas fa-map-marked-alt"></i></div>        								
+					                    	<select class="form-control" ><option value="">Please Select...</option></select>						                  
+					                  </div>
+									  <div id="select1" class="input-group" style="display:none;">
+      										<div class="input-group-addon"><i class="fas fa-map-marked-alt"></i></div>        								
+					                    	<select id="txtCSPGoals1" class="form-control list" ></select>	
+					                  </div>
+									  <div id="select2" class="input-group" style="display:none;">
+      										<div class="input-group-addon"><i class="fas fa-map-marked-alt"></i></div>        								
+					                    	<select id="txtCSPGoals2" class="form-control list" ></select>	
+					                  </div>
+									  <div id="select3" class="input-group" style="display:none;">
+      										<div class="input-group-addon"><i class="fas fa-map-marked-alt"></i></div>        								
+					                    	<select id="txtCSPGoals3" class="form-control list" ></select>	
+					                  </div>
+									  <div id="select4" class="input-group" style="display:none;">
+      										<div class="input-group-addon"><i class="fas fa-map-marked-alt"></i></div>        								
+					                    	<select id="txtCSPGoals4" class="form-control list" ></select>	
+					                  </div>
+									  <div id="select5" class="input-group" style="display:none;">
+      										<div class="input-group-addon"><i class="fas fa-map-marked-alt"></i></div>        								
+					                    	<select id="txtCSPGoals5" class="form-control list" ></select>	
+					                  </div>
+									  <div id="select6" class="input-group" style="display:none;">
+      										<div class="input-group-addon"><i class="fas fa-map-marked-alt"></i></div>        								
+					                    	<select id="txtCSPGoals6" class="form-control list" ></select>	
+					                  </div>
+
+					            </div>
+							</div>
+							
+	    
+						</div>
+					</div>	
+					</div>
+					<!--/.box-body-->															
+				</div>
+				<!--/Section2 .box-->
+								
+				<!--general form elements-->
+				<div id="Section3" class="box box-form" >
+					<div class="box-header with-border">
+						<a data-toggle="collapse" href="#collapse3" aria-expanded="true" aria-controls="collapse3"><h3 class="box-title"><b>FUNDING DETAILS</b></h3></a>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div id="collapse3" class="panel-collapse collapse in">
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+				                    <p><b>Project classification</b><span><i>(Tick all that apply)</i></span></p>			                		
+									<div class="form-check col-md-3">
+										<label>
+											<input type="checkbox" id="Capital" name="chkprojclass" value="Capital"> <span class="label-text">Capital</span>
+										</label>
+									</div>
+									<div class="form-check col-md-3">
+										<label>
+											<input type="checkbox" id="Operational" name="chkprojclass" value="Operational"> <span class="label-text">Operational</span>
+										</label>
+									</div>	
+																																				
+			                	</div>							
+		                	</div>
+							<!------------------------>
+							<div class="col-md-6">
+								<div class="form-group">
+				                    <p><b>Have you applied previously for funding for this project</b></p>			                		
+									<div class="form-check col-md-3">
+										<label>
+											<input id="chkpreviously" type="radio" name="chkprevious" value="Yes"> <span class="label-text">Yes</span>
+										</label>
+									</div>
+									<div class="form-check col-md-3">
+										<label>
+											<input type="radio" name="chkprevious" value="No"> <span class="label-text">No</span>
+										</label>
+									</div>																												
+			                	</div>
+			                								
+		                	</div>
+							<!------------------------>
+							<div id="priorfund" class="col-md-12" style="padding-left:30px;padding-right:30px; display:none">
+								<hr>
+								<div class="form-group">
+				                    <p><b>Details of all prior funding application/s</b></p>
+			                		<table id="tblA" width="100%" class="table table-bordered expense-table">
+										<tbody>
+											<tr style="background-color: #ebebeb;">
+												<th style="width:20%">Date</th>
+												<th style="width:55%">Description</th>
+												<th style="width:20%">Outcome<br/>(Granted/Not Granted)</th>
+												<th class="col-remove" style="width:5%"></th>
+											</tr>
+										</tbody>
+									</table>
+			                	</div>							
+								<div class="col-sm-12">
+									<button id="btnAddA" type="button" class="btn btn-info btn-warning btn-expense pull-right no-print" onclick="addARow();">Add Row</button>
+								</div>
+		                	</div>
+
+				           <!------------------------>
+			            					           
+						</div>
+					</div>	
+					</div>
+					<!--/.box-body-->															
+				</div>
+				<!--/Section3 .box-->
+
+
+			<!--general form elements-->
+				<div id="Section4" class="box box-form" >
+					<div class="box-header with-border">
+						<a data-toggle="collapse" href="#collapse4" aria-expanded="true" aria-controls="collapse4"><h3 class="box-title"><b>CURRENT FUNDING SOUGHT FROM</b></h3></a>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div id="collapse4" class="panel-collapse collapse in">
+						<div class="box-body">
+							<div class="row">							    
+								<div class="col-sm-12">
+									<p style="padding-left:10px"><b>(Tick all that apply and complete details)</b></p>
+									<div class="col-sm-2">
+									<div class="form-check">
+										<label>
+											<input type="checkbox" name="chkReserve" value="Reserve"> <span class="label-text"><b>Reserve</b></span>
+										</label>
+									</div>									
+									</div>
+									<div class="col-sm-8">
+										<div class="form-group">
+					                		<table id="tblB" width="100%" class="table table-bordered expense-table" style="display:none">
+												<tbody>
+													<tr style="background-color: #ebebeb;">
+														<th style="width:70%">Reserve Description</th>
+														<th style="width:25%">Amount ($)</th>
+														<th class="col-remove" style="width:5%"></th>
+													</tr>
+												</tbody>
+											</table>
+				                		</div>													
+									</div><div class="col-sm-2"></div>
+									<div id="btnAddB" class="col-sm-12" style="display:none">
+										<button type="button" class="btn btn-info btn-warning btn-expense pull-right no-print" onclick="addBRow();">Add Row</button>
+									</div>
+								</div>
+
+				           <!------------------------>
+								
+								<!--------------------------------->
+								<div class="col-sm-12">
+								<hr>
+									<div class="col-sm-2">
+									<div class="form-check">
+										<label>
+											<input type="checkbox" name="chkGrant" value="Grant/Co-Funding"> <span class="label-text"><b>Grant/Co-Funding</b></span>
+										</label>
+									</div>									
+									</div>
+									<div class="col-sm-10">
+										<div class="form-group">
+					                		<table id="tblC" width="100%" class="table table-bordered expense-table" style="display:none">
+												<tbody>
+													<tr style="background-color: #ebebeb;">
+														<th style="width:55%">Grant/Co-Funding Description</th>
+														<th style="width:20%">Amount ($)</th>
+														<th style="width:20%">Date Co-Funding<br>Received/Is Due to<br>Receive (approx.)</th>
+														<th class="col-remove" style="width:5%"></th>
+													</tr>
+												</tbody>
+											</table>
+				                		</div>													
+									</div>
+									<div id="btnAddC" class="col-sm-12" style="display:none">
+										<button type="button" class="btn btn-info btn-warning btn-expense pull-right no-print" onclick="addCRow();">Add Row</button>
+									</div>
+									
+								</div>
+								<!--------------------------------->
+								<div class="col-sm-12">
+								<hr>
+									<div class="col-sm-2">
+									<div class="form-check">
+										<label>
+											<input type="checkbox" name="chkGeneral" value="General Revenue"> <span class="label-text"><b>General Revenue</b></span>
+										</label>
+									</div>									
+									</div>
+									<div class="col-sm-8">
+										<div class="form-group">
+					                		<table id="tblD" width="100%" class="table table-bordered expense-table" style="display:none">
+												<tbody>
+													<tr style="background-color: #ebebeb;">
+														<th style="width:65%">Description</th>
+														<th style="width:35%">Amount ($)</th>
+													</tr>
+												</tbody>
+											</table>
+				                		</div>													
+									</div>
+									<div class="col-sm-2"></div>
+
+								</div>
+								<!--------------------------------->
+								<div class="col-sm-12">
+								<hr style="border-top: 2px solid #161414;">
+									<div class="col-sm-2">
+										<p><b>Total of Budget Proposal</b></p>
+									</div>	
+									<div class="col-sm-8">
+										<div class="form-group">
+					                		<table id="tblTotal" width="100%" class="table table-bordered expense-table">
+												<tbody>
+													<tr style="background-color: #ebebeb;">
+														<th style="width:65%">Description</th>
+														<th style="width:35%">Amount ($)</th>		
+													</tr>													
+												</tbody>
+											</table>
+				                		</div>	
+				                		<p><b>Summary breakdown of total project income/expenditure</b><br><i>(attach details if appropriate in attachment section below)</i></p>											
+									 														                		
+									</div>
+									<div class="col-sm-2"><i>Please click the Amount Field for Total Calculation</i></div>															
+								</div>
+								<!--------------------------------->
+								<div class="col-sm-12">
+								    <div class="col-sm-2"><p> </p></div>
+								    <div class="col-sm-10">
+										<div class="form-group">
+					                		<table id="tblTotal" width="100%" class="table table-bordered expense-table">
+												<tbody>
+													<tr style="background-color: #ebebeb;">
+														<th style="width:50%"></th>
+														<th style="width:20%">Amount ($)</th>
+														<th style="width:30%">Categories</th>
+													</tr>	
+													<tr>
+														<td><b>Income</b><br>Note: Reserves (including s94) is just a source of funding and not a form of income.</td>
+														<td><input id="txtIncome" type="text" class="form-control" placeholder=""></td>
+														<td></td>
+													</tr>												
+													<tr>
+														<td><b>Expenditure</b></td>
+														<td><input id="txtExpditure" type="text" class="form-control" placeholder=""></td>
+														<td>
+														<select id="txtExpCat" class="form-control">
+						                					<option value="" selected>Please select..</option>
+						                					<option value="Employee Costs">Employee Costs</option>
+						                					<option value="Material & Contracts">Material & Contracts</option>
+						                					<option value="Other Expenses">Other Expenses</option>
+						                				</select>					       
+						                				</td>
+													</tr>												
+													<tr>
+														<td><b>Net Income / Expenditure</b></td>
+														<td><input id="txtNetIncome" type="text" class="form-control" placeholder=""></td>
+														<td></td>
+													</tr>												
+
+												</tbody>
+											</table>											
+				                		</div>	
+									</div>
+								
+								</div>
+								<!--------------------------------->
+								
+								
+								
+								
+							</div>
+							<!-- /row-->	
+						</div>
+						<!--/.box-body-->															
+					</div>
+				</div>
+				<!--/Section3 .box-->
+
+			<!--general form elements-->
+				<div id="Section5" class="box box-form" >
+					<div class="box-header with-border">
+						<a data-toggle="collapse" href="#collapse5" aria-expanded="true" aria-controls="collapse5"><h3 class="box-title"><b>SUMMARY OF ONGOING FINANCIAL IMPACT ON COUNCIL'S OPERATIONS ON COMPLETION OF THE PROJECT</b></h3></a>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div id="collapse5" class="panel-collapse collapse in">
+						<div class="box-body">
+							<div class="row">
+								<div class="col-sm-12">
+										<div class="form-group">
+					                		<table id="tblSum" width="100%" class="table table-bordered expense-table">
+												<tbody>
+													<tr >
+														<th style="width:25%;"></th>
+														<th style="width:15%;background-color: #ebebeb;">Year 1</th>														
+														<th style="width:15%;background-color: #ebebeb;">Year 2</th>														
+														<th style="width:15%;background-color: #ebebeb;">Year 3</th>														
+														<th style="width:15%;background-color: #ebebeb;">Year 4</th>														
+														<th style="width:15%;background-color: #ebebeb;">Year 5</th>														
+													</tr>	
+													<tr>
+	        											<td><b><input readonly="readonly" class="form-control" type="text" id="txtSIncome" value="Income ($K)"></b></td>
+	        											<td><input name="Yrincome" class="form-control" type="text" id="txtSYr1"></td>
+	        											<td><input name="Yrincome" class="form-control" type="text" id="txtSYr2"></td>
+														<td><input name="Yrincome" class="form-control" type="text" id="txtSYr3"></td>
+														<td><input name="Yrincome" class="form-control" type="text" id="txtSYr4"></td>
+														<td><input name="Yrincome" class="form-control" type="text" id="txtSYr5"></td>
+													</tr>
+													<tr>
+	        											<td><b><input readonly="readonly" class="form-control" type="text" id="txtSExp" value="Expenditure ($K)"></b></td>
+	        											<td><input name="YrExpd" class="form-control" type="text" id="txtSExp1"></td>
+	        											<td><input name="YrExpd" class="form-control" type="text" id="txtSExp2"></td>
+														<td><input name="YrExpd" class="form-control" type="text" id="txtSExp3"></td>
+														<td><input name="YrExpd" class="form-control" type="text" id="txtSExp4"></td>
+														<td><input name="YrExpd" class="form-control" type="text" id="txtSExp5"></td>
+													</tr>
+
+												</tbody>
+											</table>
+				                		</div>	
+								</div>
+								<!--------------------------------->
+							</div>
+							<!-- /row-->	
+						</div>
+						<!--/.box-body-->															
+					</div>
+				</div>
+				<!--/Section3 .box-->
+
+				
+				<!--general form elements-->
+				<div id="attachSection" class="box box-form">
+					<div class="box-header with-border">
+						<h3 class="box-title"><b>Attachments (if applicable)</b></h3>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div class="box-body">						
+						<div class="row">							
+							<div class="col-sm-12">
+				                 <div id="attachmentBrowser" class="form-group no-print">
+					                  <label>Attachments</label>
+									<div class="input-group">
+   										<div class="input-group-addon"><i class="fas fa-paperclip"></i></div>    
+					                  	<input type="file" id="fileAttachmentsProperty" accept="image/jpg, image/jpeg, image/png, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel ">
+					                  </div>
+				                 </div>
+						         <div class="form-group">
+						              	<button id="addFileButtonProperty"  type="button" class="btn btn-form no-print">Upload</button>
+								 </div>
+								 <div class="form-group">
+								    <div class="row">
+								     	<div class="col-sm-2"></div>
+								     	<div id="fileAttachedProperty" class="col-sm-8"></div>
+								     </div>
+								 </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--/.box-->
+
+				
+		<!--------------------------------------------------------------------------------->				
+		</div>
+		<!--------------------------------------------------------------------------------->				
+
+		<div id="MgrSection" class="box box-form"  style="border-top-color: fuchsia; display:none">
+					<div class="box-header with-border">
+						<h3 class="box-title"><b>MANAGER APPROVAL SECTION</b></h3>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div class="box-body">						
+						<div class="row">	
+							<div class="col-md-12">
+								<div class="col-sm-6">
+									<p><b>Support for Bid?</b><span class="mandatory" style="color:red">*</span></p>
+									<div class="col-sm-4">										   
+					            		<div class="form-group">
+					            			<label for="chkApprv_Yes" class="btn btn-success">Yes
+					            				<input type="radio" id="chkApprv_Yes" class="badgebox" name="optApproveBy" value="Yes">
+					            			 	<span class="badge">&check;</span>&nbsp; 
+					            			</label>        
+					            		</div>
+									</div>
+									<div class="col-sm-4">						
+										<div class="form-group">											
+											<label for="chkApprv_No" class="btn btn-success">No
+												<input type="radio" id="chkApprv_No" class="badgebox" name="optApproveBy" value="No">
+												<span class="badge">&check;</span>&nbsp; 
+											</label>							
+										</div>						
+								    </div>											
+								</div>
+							
+							<!------------------------>
+							<div class="col-sm-6">    
+					            <div class="form-group">
+					                  <label><b>Approved by</b><span class="mandatory" style="color:red">*</span></label>
+										<div class="input-group">
+      										<div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>        								
+						                    <input id="txtManager" type="text" class="form-control" placeholder="">
+						                    <input id="txtMgrID" type="hidden" class="form-control" placeholder="">
+						                    <input id="txtMgrDate" type="hidden" class="form-control" placeholder="">
+					                  </div>
+					            </div>
+					        </div>	
+					     </div>						
+							<!------------------------>
+			
+						</div>
+					</div>
+					<!-- end box-body-->
+				</div>
+				<!--/Manager Section.box-->
+		
+			<!-- Director Section -->
+				<div id="DirSection" class="box box-form"  style="border-top-color: blueviolet; display:none">
+					<div class="box-header with-border">
+						<h3 class="box-title"><b>DIRECTOR APPROVAL SECTION</b></h3>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div class="box-body">	
+						<div class="row">
+							<div class="col-md-12">						
+								<div class="col-sm-6">
+									<p><b>Support for Bid?</b><span class="mandatory" style="color:red">*</span></p>
+										<div class="col-sm-4">
+				                			<div class="form-group">
+				                				<label for="chkDir_Yes" class="btn btn-success">Yes
+				                					<input type="radio" id="chkDir_Yes" class="badgebox" name="optDir" value="Yes">
+				                				 	<span class="badge">&check;</span>&nbsp; 
+				                				</label>        
+				                			</div>
+										</div>
+										<div class="col-sm-4">						
+											<div class="form-group">											
+												<label for="chkDir_No" class="btn btn-success">No
+													<input type="radio" id="chkDir_No" class="badgebox" name="optDir" value="No">
+													<span class="badge">&check;</span>&nbsp; 
+												</label>							
+											</div>						
+									    </div>											
+								</div>								
+								<div class="col-sm-6">    
+						            <div class="form-group">
+						                  <label><b>Approved by</b><span class="mandatory" style="color:red">*</span></label>
+											<div class="input-group">
+	      										<div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>   
+	      										<input id="txtDirector" type="text" class="form-control" placeholder="">     								
+							                    <input id="txtDirID" type="hidden" class="form-control" placeholder="">
+							                    <input id="txtDirDate" type="hidden" class="form-control" placeholder="">
+						                  </div>
+						            </div>
+						        </div>							
+							<!------------------------>
+
+		                	</div>
+						</div>						
+						<!----------------------->
+					</div>					
+			    </div><!--End of Section-->	
+
+
+				<!-- Director Section -->
+				<div id="PCSection" class="box box-form"  style="border-top-color: cadetblue; display:none;">
+					<div class="box-header with-border">
+						<h3 class="box-title"><b>PEOPLE & CULTURE TEAM APPROVAL</b></h3>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div class="box-body">	
+
+						<div class="row">
+							<div class="col-md-12">						
+								<div class="col-sm-6">
+									<p><b>Review for P&C</b><span class="mandatory" style="color:red">*</span></p>
+										<div class="col-sm-4">
+				                			<div class="form-group">
+				                				<label for="chkpcapprove_Yes" class="btn btn-success">Yes
+				                					<input type="radio" id="chkpcapprove_Yes" class="badgebox" name="optPC" value="Yes">
+				                				 	<span class="badge">&check;</span>&nbsp; 
+				                				</label>        
+				                			</div>
+										</div>
+										<div class="col-sm-4">						
+											<div class="form-group">											
+												<label for="chkpcapprove_No" class="btn btn-success">No
+													<input type="radio" id="chkpcapprove_No" class="badgebox" name="optPC" value="No">
+													<span class="badge">&check;</span>&nbsp; 
+												</label>							
+											</div>						
+									    </div>											
+								</div>								
+								<div class="col-sm-6">    
+						            <div class="form-group">
+						                  <label><b>Approved by</b><span class="mandatory" style="color:red">*</span></label>
+											<div class="input-group">
+	      										<div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>   
+	      										<input id="txtPC" type="text" class="form-control" placeholder="">     								
+	      										<input id="txtPCDate" type="hidden" class="form-control" placeholder="">     								
+						                  </div>
+						            </div>
+						        </div>							
+							<!------------------------>
+
+		                	</div>
+		                	 <!----------------------->    
+							<div id="PCComment" class="col-md-12">
+								<div class="form-group">
+				                    <label><b>P & C Comment</b><br/></label>
+			                		<textarea id="txtPCComment" type="text" class="form-control" placeholder="" rows="6"></textarea>
+			                	</div>							
+		                	</div>
+
+		                	
+						</div>						
+						<!----------------------->
+
+
+					</div>
+				</div><!--End of Section-->	
+				
+				<!-- IMT Section -->
+				<div id="IMTSection" class="box box-form"  style="border-top-color: darkorange; display:none;">
+					<div class="box-header with-border">
+						<h3 class="box-title"><b>IMT TEAM APPROVAL</b></h3>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div class="box-body">	
+
+						<div class="row">
+							<div class="col-md-12">						
+								<div class="col-sm-6">
+									<p><b>IMT Team to Review</b><span class="mandatory" style="color:red">*</span></p>
+										<div class="col-sm-4">
+				                			<div class="form-group">
+				                				<label for="chkIMTapprove_Yes" class="btn btn-success">Yes
+				                					<input type="radio" id="chkIMTapprove_Yes" class="badgebox" name="optIMT" value="Yes">
+				                				 	<span class="badge">&check;</span>&nbsp; 
+				                				</label>        
+				                			</div>
+										</div>
+										<div class="col-sm-4">						
+											<div class="form-group">											
+												<label for="chkIMTapprove_No" class="btn btn-success">No
+													<input type="radio" id="chkIMTapprove_No" class="badgebox" name="optIMT" value="No">
+													<span class="badge">&check;</span>&nbsp; 
+												</label>							
+											</div>						
+									    </div>											
+								</div>								
+								<div class="col-sm-6">    
+						            <div class="form-group">
+						                  <label><b>Reviewed by</b><span class="mandatory" style="color:red">*</span></label>
+											<div class="input-group">
+	      										<div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>   
+	      										<input id="txtIMT" type="text" class="form-control" placeholder="">     								
+	      										<input id="txtIMTDate" type="hidden" class="form-control" placeholder="">	      										
+						                  </div>
+						            </div>
+						        </div>							
+							<!------------------------>
+
+		                	</div>
+		                	 <!----------------------->    
+							<div id="IMTComment" class="col-md-12">
+								<div class="form-group">
+				                    <label><b>IMT Comment</b><br/></label>
+			                		<textarea id="txtIMTComment" type="text" class="form-control" placeholder="" rows="6"></textarea>
+			                	</div>							
+		                	</div>
+
+		                	
+						</div>						
+						<!----------------------->
+
+
+					</div>
+				</div><!--End of Section-->	
+				
+				<!-- IMT Section -->
+				<div id="GOVSection" class="box box-form"  style="border-top-color: darkorange; display:none;">
+					<div class="box-header with-border">
+						<h3 class="box-title"><b>GOVERNANCE TEAM APPROVAL</b></h3>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div class="box-body">	
+
+						<div class="row">
+							<div class="col-md-12">						
+								<div class="col-sm-6">
+									<p><b>Governance Team to Review</b><span class="mandatory" style="color:red">*</span></p>
+										<div class="col-sm-4">
+				                			<div class="form-group">
+				                				<label for="chkGOVapprove_Yes" class="btn btn-success">Yes
+				                					<input type="radio" id="chkGOVapprove_Yes" class="badgebox" name="optGOV" value="Yes">
+				                				 	<span class="badge">&check;</span>&nbsp; 
+				                				</label>        
+				                			</div>
+										</div>
+										<div class="col-sm-4">						
+											<div class="form-group">											
+												<label for="chkGOVapprove_No" class="btn btn-success">No
+													<input type="radio" id="chkGOVapprove_No" class="badgebox" name="optGOV" value="No">
+													<span class="badge">&check;</span>&nbsp; 
+												</label>							
+											</div>						
+									    </div>											
+								</div>								
+								<div class="col-sm-6">    
+						            <div class="form-group">
+						                  <label><b>Reviewd by</b><span class="mandatory" style="color:red">*</span></label>
+											<div class="input-group">
+	      										<div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>   
+	      										<input id="txtGOV" type="text" class="form-control" placeholder="">     								
+	      										<input id="txtGOVDate" type="hidden" class="form-control" placeholder="">	      										
+						                  </div>
+						            </div>
+						        </div>							
+							<!------------------------>
+
+		                	</div>
+		                	 <!----------------------->    
+							<div id="GOVComment" class="col-md-12">
+								<div class="form-group">
+				                    <label><b>Governance Team Comment</b><br/></label>
+			                		<textarea id="txtGOVComment" type="text" class="form-control" placeholder="" rows="6"></textarea>
+			                	</div>							
+		                	</div>
+
+		                	
+						</div>						
+						<!----------------------->
+
+
+					</div>
+				</div><!--End of Section-->	
+		
+				<!-- Director Section -->
+				<div id="FINSection" class="box box-form"  style="border-top-color: burlywood; display:none;">
+					<div class="box-header with-border">
+						<h3 class="box-title"><b>FINANCE TEAM APPROVAL</b></h3>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div class="box-body">	
+
+						<div class="row">
+							<div class="col-md-12">						
+								<div class="col-sm-6">
+									<p><b>Finance Team to Review</b><span class="mandatory" style="color:red">*</span></p>
+										<div class="col-sm-4">
+				                			<div class="form-group">
+				                				<label for="chkfapprove_Yes" class="btn btn-success">Yes
+				                					<input type="radio" id="chkfapprove_Yes" class="badgebox" name="optfinance" value="Yes">
+				                				 	<span class="badge">&check;</span>&nbsp; 
+				                				</label>        
+				                			</div>
+										</div>
+										<div class="col-sm-4">						
+											<div class="form-group">											
+												<label for="chkfapprove_No" class="btn btn-success">No
+													<input type="radio" id="chkfapprove_No" class="badgebox" name="optfinance" value="No">
+													<span class="badge">&check;</span>&nbsp; 
+												</label>							
+											</div>						
+									    </div>											
+								</div>								
+								<div class="col-sm-6">    
+						            <div class="form-group">
+						                  <label><b>Reviewed by</b><span class="mandatory" style="color:red">*</span></label>
+											<div class="input-group">
+	      										<div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>   
+	      										<input id="txtFinance" type="text" class="form-control" placeholder="">  
+	      										<input id="txtFINDate" type="hidden" class="form-control" placeholder="">     								
+						                  </div>
+						            </div>
+						        </div>							
+							<!------------------------>
+
+		                	</div>
+		                	 <!----------------------->    
+							<div id="FNComment" class="col-md-12">
+								<div class="form-group">
+				                    <label><b>Finance Comment</b><br/></label>
+			                		<textarea id="txtFNComment" type="text" class="form-control" placeholder="" rows="6"></textarea>
+			                	</div>							
+		                	</div>
+
+		                	
+						</div>						
+						<!----------------------->
+
+
+					</div>
+				</div><!--End of Section-->	
+				
+			<!-- Director Section -->
+				<div id="ETSection" class="box box-form"  style="border-top-color: deepskyblue; display:none;">
+					<div class="box-header with-border">
+						<h3 class="box-title"><b>EXECUTIVE TEAM APPROVAL</b></h3>
+					</div>
+					<!--/.box-header-->
+					<!--form start-->
+					<div class="box-body">	
+						<div class="row">
+							<div class="col-md-6">	
+								<div class="col-md-6"><label><b>ET Reference Number</b><span class="mandatory" style="color:red">*</span></label></div>
+								<div class="col-md-4">
+									<div class="form-group">				                  
+										<div class="input-group">
+	   										<div class="input-group-addon"><i class="fas fa-award"></i></div>    
+					                    	<input id="txtETRef" type="text" class="form-control" placeholder="">
+					                  </div>
+					                 </div>				
+				                 </div>					
+							</div>		
+							<div class="col-md-6">		
+								<div class="col-md-4"><label>ET Resolution Date<span class="mandatory" style="color:red">*</span></label></div>
+								<div class="col-md-6">
+									<div class="form-group">				                  
+										<div class="input-group">
+	   										<div class="input-group-addon"><i class="fas fa-calendar"></i></div>    
+					                    	<input id="txtETDate" type="text" class="form-control" placeholder="">
+					                  </div>
+					                 </div>				
+				                 </div>													
+							</div>		
+							<!----------------------->
+							<div class="col-md-12">
+							<hr>
+
+								<div class="col-sm-6">
+									<p><b>ET Approved?</b><span class="mandatory" style="color:red">*</span></p>
+										<div class="col-sm-4">
+				                			<div class="form-group">
+				                				<label for="chkETApprove_Yes" class="btn btn-success">Yes
+				                					<input type="radio" id="chkETApprove_Yes" class="badgebox" name="ETApprove" value="Yes">
+				                				 	<span class="badge">&check;</span>&nbsp; 
+				                				</label>        
+				                			</div>
+										</div>
+										<div class="col-sm-4">						
+											<div class="form-group">											
+												<label for="chkETApprove_No" class="btn btn-success">No
+													<input type="radio" id="chkETApprove_No" class="badgebox" name="ETApprove" value="No">
+													<span class="badge">&check;</span>&nbsp; 
+												</label>							
+											</div>						
+									    </div>											
+								</div>								
+								<div class="col-sm-6">    
+						            <div class="form-group">
+						                  <label><b>Approved by</b><span class="mandatory" style="color:red">*</span></label>
+											<div class="input-group">
+	      										<div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>   
+	      										<input id="txtET" type="text" class="form-control" placeholder="">     								
+						                  </div>
+						            </div>
+						        </div>
+						    </div>	
+						    <!----------------------->    
+							<div id="ETComment" class="col-md-12" style="display:none">
+								<div class="form-group">
+				                    <label><b>Reason/s for non-approval</b><br/></label>
+			                		<textarea id="txtETComment" type="text" class="form-control" placeholder="" rows="6"></textarea>
+			                	</div>							
+		                	</div>
+
+													
+						</div>						
+						<!----------------------->
+					</div>					
+			    </div><!--End of Section-->	
+		
+								
+	</div><!--End Row-->
+		
+		
+		
+	<div id="button" class="box-tools pull-right no-print">
+		
+  			  <a id="btnSave" class="btn btn-form btn-warning">
+                <i class="fa fa-save"></i> Save
+              </a>
+		
+  			  <a id="btnSubmit" class="btn btn-form">
+                <i class="fa fa-save"></i> Submit
+              </a>
+                
+  			  <a id="btnCompleted" class="btn btn-form btn-success" style="display:none;">
+                <i class="fa fa-play"></i> Completed
+              </a>    			  
+              
+			  <button id="btnApproveMGR" class="btn btn-form" onclick="Approve('MGR')" type="button" style="display:none">
+              	  <i class="fa fa-save"></i> Submit
+			  </button>
+			  <button id="btnApproveDIR" class="btn btn-form" onclick="Approve('DIR')" type="button" style="display:none">
+              	  <i class="fa fa-save"></i> Submit
+			  </button>
+			  <button id="btnApprovePC" class="btn btn-form" onclick="Approve('PC')" type="button" style="display:none">
+              	  <i class="fa fa-save"></i> Submit
+			  </button>
+			  <button id="btnApproveIMT" class="btn btn-form" onclick="Approve('IMT')" type="button" style="display:none">
+              	  <i class="fa fa-save"></i> Submit
+			  </button>
+			  <button id="btnApproveGOV" class="btn btn-form" onclick="Approve('GOV')" type="button" style="display:none">
+              	  <i class="fa fa-save"></i> Submit
+			  </button>
+			  <button id="btnApproveFIN" class="btn btn-form" onclick="Approve('FIN')" type="button" style="display:none">
+              	  <i class="fa fa-save"></i> Submit
+			  </button>
+			  
+     		  <a id="btnPrint" class="btn btn-form" style="display:none;">
+                <i class="fa fa-print"></i> Print
+              </a>
+  			    			  
+  			  <a id="btnCancel" class="btn btn-form " style="display:none;">
+                <i class="fa fa-remove"></i> Cancel
+              </a>  
+              
+              
+  
+  <!--<a id="btnCancel" class="btn btn-form" style="display:none;">
+                Cancel
+              </a>-->
+         
+  
+<!--<a id="btnCancel" class="btn btn-form ">
+                <i class="fa fa-remove"></i> Cancel
+              </a>            
+       		 <a id="btnReceived" class="btn btn-form btn-success" style="display:none;">
+                <i class="fa fa-eye"></i> Submit
+              </a>
+
+            
+   <a id="btnSubmit" class="btn btn-form">
+                <i class="fa fa-save"></i> Submit
+              </a>  
+   <a  id="btnRequestChanges" class="btn btn-form">
+                <i class="fa fa-exchange"></i> Request Changes
+              </a>  
+   <a id="btnReviewed" class="btn btn-form">
+                <i class="fa fa-eye"></i> Reviewed
+              </a>  
+   <a id="btnApproved" class="btn btn-form">
+                <i class="fa fa-play"></i> Approve
+              </a>  
+<a id="btnPrint" class="btn btn-form">
+                <i class="fa fa-print"></i> Print
+              </a>  
+            
+-->      
+   </div><!--End Div Button-->		
+   <div class="col-sm-12"><p style="font-size:x-small">Form Design & Developed by IMT</p></div>
+   
+</div><!--End Form Section-->
+
+
+</section><html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><head>
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:FSObjType msdt:dt="string">0</mso:FSObjType>
+<mso:FileDirRef msdt:dt="string">sites/iconnect/SiteAssets/StaffPortalForms/CateringForm/html</mso:FileDirRef>
+<mso:ContentTypeId msdt:dt="string">0x0101001C8E37376BEA8A45867BD2D796979F3D</mso:ContentTypeId>
+<mso:ContentType msdt:dt="string">Document</mso:ContentType>
+<mso:FileLeafRef msdt:dt="string">catering.html</mso:FileLeafRef>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
