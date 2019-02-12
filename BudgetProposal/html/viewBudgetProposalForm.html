@@ -1,0 +1,113 @@
+﻿<link rel="stylesheet" type="text/css" href="/sites/rivernet/SiteAssets/bootstrap-admintemplate/css/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/sites/rivernet/SiteAssets/bootstrap-admintemplate/css/datatables/responsive.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/sites/rivernet/SiteAssets/css/timeline3D.css">
+<link rel="stylesheet" href="/sites/rivernet/SiteAssets/css/buttons.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="/sites/rivernet/SiteAssets/bootstrap-admintemplate/css/sweetalert/sweetalert.css">
+
+<!--<script type="text/javascript" src="/sites/rivernet/SiteAssets/bootstrap-admintemplate/js/plugins/datatables/jquery.dataTables.min.js"></script>-->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/bootstrap-admintemplate/js/plugins/datatables/dataTables.bootstrap.js"></script>
+
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/dataTables.buttons.min.js"></script> 
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/jszip.min.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/pdfmake.min.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/vfs_fonts.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/buttons.print.min.js"></script>
+
+
+<!--<script type="text/javascript" src="/sites/rivernet/SiteAssets/StaffPortalForms/CommonFiles/utility.js"></script>-->
+<!--<script type="text/javascript" src="/sites/rivernet/SiteAssets/bootstrap-admintemplate/js/plugins/sweetalert/sweetalert.min.js"></script>-->
+<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/StaffPortalForms/BudgetProposal/js/viewBudgetProposalForm.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="/sites/rivernet/SiteAssets/js/jquery.canvasjs.min.js"></script>
+<style>
+
+#O365_MainLink_Settings{
+	/*display:none;*/
+}
+.table thead tr th {
+    font-size: 12px;
+    font-weight: 600;
+}
+.table td, .table th {
+    font-size: 12px;
+}
+
+
+
+</style>
+
+<section class="content">
+  <div class="row">
+	<!--Navigation Buttons-->
+	<!--<div class="col-md-3">
+	</div>-->
+	<!--Content-->	
+	
+	<div class="col-md-12">
+		<div id="infobox" class="alert alert-warning" style="display:none">
+			<h4><i class="icon fa fa-check"></i>Alert!</h4>
+			<p>Warning alert preview. This alert is dismissable.</p>
+		</div>
+		<!--general form elements-->
+		<div class="box box-primary" style="display:none;">
+			<div class="box-header with-border">
+				<h3 class="box-title">Search</h3>
+			</div>
+			<!--/.box-header-->
+			<!--form start-->
+			<div class="box-body">
+				<div class="form-group" id="clientSelect">
+					Client
+					<input type="text" class="form-control" name="WPQ2txtClient" id="txtClient" placeholder="Enter few characters of last name">
+				</div>
+			</div>
+			<!--/.box-body-->
+			<div class="box-footer">
+				<button id="btnSearch" type="button" class="btn btn-primary">
+				Search</button></div>
+		</div>
+		<p>To complete or editting the Budget Proposal Form please click on the name display in the table below for more details.:<br/></p>
+		
+		<p></p>
+		<div class="row">
+			<div id="createSPR" class="col-sm-6">
+				<button type="button" class="btn btn-form" onclick="window.location.href = 'Budget-Proposal-Form.aspx';">Budget Proposal Form</button>
+			</div>
+		</div>
+		<p></p>
+		<div id="divSearchResults"></div>
+
+		<!--/.box-->
+		</div>
+
+		
+	
+</div>
+<!--/.box-->
+<div id="alertbox" class="alert alert-success alert-dismissible" style="display:none">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+	×</button>
+	<h4><i class="icon fa fa-check"></i>Alert!</h4>
+	<p>Success alert preview. This alert is dismissable.</p>
+</div>
+		
+		
+	
+  </section>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><head>
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:FSObjType msdt:dt="string">0</mso:FSObjType>
+<mso:FileDirRef msdt:dt="string">sites/councillorportal/SiteAssets/councillorportalforms/CouncillorRequestForm/html</mso:FileDirRef>
+<mso:ContentTypeId msdt:dt="string">0x0101001C8E37376BEA8A45867BD2D796979F3D</mso:ContentTypeId>
+<mso:ContentType msdt:dt="string">Document</mso:ContentType>
+<mso:FileLeafRef msdt:dt="string">ViewMyRequests.html</mso:FileLeafRef>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">System Account</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">System Account</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+<title></title></head>
